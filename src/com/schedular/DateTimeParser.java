@@ -14,67 +14,57 @@ public class DateTimeParser implements Parser {
 
     @Override
     public ExecutableTask apply(String command) throws ParserException {
-
-        boolean hasMatch = Pattern.matches(pattern.pattern(), command);
-        if (!hasMatch) {
+        Matcher matcher = pattern.matcher(command);
+        if (!matcher.matches()) {
             return null;
         }
 
-        Matcher matcher = pattern.matcher(command);
-        if(matcher.matches()) {
-            int mm = Integer.parseInt(matcher.group(1));
-            int hr = Integer.parseInt(matcher.group(2));
-            int dd = Integer.parseInt(matcher.group(3));
-            int mn = Integer.parseInt(matcher.group(4));
-            int yyyy = Integer.parseInt(matcher.group(5));
-            String shellCommand = matcher.group(6);
-            this.isValidDate(dd, mn, yyyy);
-            this.validateTime(hr, mm);
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.MONTH, mn-1);
-            calendar.set(Calendar.DAY_OF_MONTH, dd);
-            calendar.set(Calendar.YEAR, yyyy);
-            calendar.set(Calendar.HOUR_OF_DAY, hr);
-            calendar.set(Calendar.MINUTE, mm);
-            calendar.set(Calendar.SECOND, 0);
-            calendar.set(Calendar.MILLISECOND, 0);
-            long time = calendar.getTimeInMillis();
-            return new ScheduledTask(shellCommand, time);
-        }
-        return  null;
+        int minute = Integer.parseInt(matcher.group(1));
+        int hour = Integer.parseInt(matcher.group(2));
+        int day = Integer.parseInt(matcher.group(3));
+        int month = Integer.parseInt(matcher.group(4));
+        int year = Integer.parseInt(matcher.group(5));
+        String shellCommand = matcher.group(6);
+
+        validateDate(day, month, year);
+        validateTime(hour, minute);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month - 1, day, hour, minute, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        return new ScheduledTask(shellCommand, calendar.getTimeInMillis());
     }
 
-    private void isValidDate(int day, int month, int year) throws ParserException {
+    private void validateDate(int day, int month, int year) throws ParserException {
         if (month < 1 || month > 12) {
-            throw new ParserException("Invalid Month Provided");
+            throw new ParserException("Invalid month: " + month);
         }
-        if (day < 1 || day > 31) {
-            throw new ParserException("Invalid Day Provided");
+        if (day < 1 || day > daysInMonth(month, year)) {
+            throw new ParserException("Invalid day: " + day);
         }
-        if (month == 2) {
-            if (year % 4 == 0) {
-                if ( day <= 29 ) {
-                    throw new ParserException("Invalid Day Provided");
-                }
-            } else {
-                if ( !(day <= 28) ) {
-                    throw new ParserException("Invalid Day Provided");
-                }
-            }
-        }
-        if (month == 4 || month == 6 || month == 9 || month == 11) {
-            if(  day <= 30 ) {
-                throw new ParserException("Invalid Day Provided");
-            }
-        }
-
         if (year < 1900 || year > 2100) {
             throw new ParserException("Invalid year: " + year);
         }
     }
 
-    private void validateTime(int hour, int minute) throws ParserException {
-        if(!(hour >= 0 && hour < 24) || !(minute >= 0 && minute < 60) ) throw new ParserException("Invalid Time Provided");
+    private int daysInMonth(int month, int year) {
+        return switch (month) {
+            case 2 -> (isLeapYear(year)) ? 29 : 28; // February
+            case 4, 6, 9, 11 -> // April, June, September, November
+                    30;
+            default -> // All other months
+                    31;
+        };
     }
 
+    private boolean isLeapYear(int year) {
+        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+    }
+
+    private void validateTime(int hour, int minute) throws ParserException {
+        if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60) {
+            throw new ParserException("Invalid time: " + hour + ":" + minute);
+        }
+    }
 }
