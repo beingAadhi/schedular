@@ -18,3 +18,4 @@ The application is designed to handle scheduling efficiently and provides flexib
 - Assuming to use Schedular provided by language since Java has a built-in Schedular.
 - Assuming we might Implement more Parser's, Executor's in the Future.
 - Assuming the system is not under heavy tasks, and the tasks are not resource-intensive. If required we increase the thread pool size.
+- Assuming Test cases are not provided for the sake of simplicity. But we can use JUnit if required.
