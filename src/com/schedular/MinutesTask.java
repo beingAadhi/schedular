@@ -6,9 +6,9 @@ import java.util.Date;
  *This class represents a task that is scheduled to run at a fixed interval (in minutes).
  */
 public class MinutesTask implements RecurringTask {
-    private String command;
-    private int delay;
-    private TaskType taskType= TaskType.RECURRING;;
+    private final String command;
+    private final int delay;
+    private TaskType taskType= TaskType.RECURRING;
 
     // this will always be false, since the task is recurring
     private boolean isCompleted = false;
@@ -30,7 +30,7 @@ public class MinutesTask implements RecurringTask {
 
     @Override
     public TaskType getTaskType() {
-        return TaskType.RECURRING;
+        return taskType;
     }
 
     @Override

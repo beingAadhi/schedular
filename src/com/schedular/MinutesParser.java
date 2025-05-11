@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class MinutesParser implements Parser {
 
-    private Pattern pattern = Pattern.compile("^\\*/(\\d{1,4})\\s+(.+)$");
+    private final Pattern pattern = Pattern.compile("^\\*/(\\d{1,4})\\s+(.+)$");
 
     public ExecutableTask apply(String interval) throws ParserException {
 

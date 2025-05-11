@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class DateTimeParser implements Parser {
 
-    private Pattern pattern = Pattern.compile("^(\\d{1,2}) (\\d{1,2}) (\\d{1,2}) (\\d{2}) (\\d{4}) (.+)$");
+    private final Pattern pattern = Pattern.compile("^(\\d{1,2}) (\\d{1,2}) (\\d{1,2}) (\\d{2}) (\\d{4}) (.+)$");
 
     @Override
     public ExecutableTask apply(String command) throws ParserException {
@@ -22,11 +22,11 @@ public class DateTimeParser implements Parser {
 
         Matcher matcher = pattern.matcher(command);
         if(matcher.matches()) {
-            Integer mm = Integer.parseInt(matcher.group(1));
-            Integer hr = Integer.parseInt(matcher.group(2));
-            Integer dd = Integer.parseInt(matcher.group(3));
-            Integer mn = Integer.parseInt(matcher.group(4));
-            Integer yyyy = Integer.parseInt(matcher.group(5));
+            int mm = Integer.parseInt(matcher.group(1));
+            int hr = Integer.parseInt(matcher.group(2));
+            int dd = Integer.parseInt(matcher.group(3));
+            int mn = Integer.parseInt(matcher.group(4));
+            int yyyy = Integer.parseInt(matcher.group(5));
             String shellCommand = matcher.group(6);
             this.isValidDate(dd, mn, yyyy);
             this.validateTime(hr, mm);
@@ -53,11 +53,11 @@ public class DateTimeParser implements Parser {
         }
         if (month == 2) {
             if (year % 4 == 0) {
-                if ( day <= 29 ); {
+                if ( day <= 29 ) {
                     throw new ParserException("Invalid Day Provided");
                 }
             } else {
-                if ( !(day <= 28) ); {
+                if ( !(day <= 28) ) {
                     throw new ParserException("Invalid Day Provided");
                 }
             }

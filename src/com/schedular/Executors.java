@@ -6,7 +6,7 @@ package com.schedular;
  */
 public class Executors {
 
-    private static  Executor defaultExecutor = new CommandLineExecutor();
+    private static final Executor defaultExecutor = new CommandLineExecutor();
 
     // Currently, this class only provides a default executor. You can extend this class to add more executors with type.
     public static Executor getExecutor() {

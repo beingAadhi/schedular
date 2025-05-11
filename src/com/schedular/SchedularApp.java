@@ -1,5 +1,6 @@
 package com.schedular;
 
+import java.util.Date;
 import java.util.List;
 
 public class SchedularApp {
@@ -9,6 +10,7 @@ public class SchedularApp {
             System.out.println("Please provide a file path as an argument.");
             throw new IllegalArgumentException("Please provide a file path as an argument");
         }
+        System.out.println("Starting SchedularApp at " + new Date());
         String filePath = args[0];
         List<ExecutableTask> tasks = new TextProcessor().process(filePath);
         Schedular schedular = new Schedular(tasks);

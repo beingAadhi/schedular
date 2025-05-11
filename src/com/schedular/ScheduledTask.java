@@ -6,8 +6,8 @@ import java.util.Date;
  * This class represents a task that is scheduled to run at a specific time.
  */
 public class ScheduledTask implements ExecutableTask {
-    private String command;
-    private long scheduledTime;
+    private final String command;
+    private final long scheduledTime;
     private boolean isCompleted = false;
 
     public ScheduledTask(String command, long scheduledTime) {

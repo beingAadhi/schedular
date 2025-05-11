@@ -1,8 +1,8 @@
-15 2 11 05 2025 echo First Task to be executed on or before the date
-48 17 11 05 2025 echo Second Task to be executed on or before the date
-*/15 echo Third Task to be executed every 15 minutes
-*/20 echo Fourth Task to be executed every 20 minutes
-*/30 echo Fifth Task to be executed every 30 minutes
+30 20 11 05 2025 echo First Task to be executed on or before the date
+35 20 11 05 2025 echo Second Task to be executed on or before the date
+*/2 echo Third Task to be executed every 2 minutes
+*/5 echo Fourth Task to be executed every 5 minutes
+*/10 echo Fifth Task to be executed every 10 minutes
 50 echo Sixth Invalid Task
 61 17 11 05 2025 echo Seventh Task Invalid Minutes
 50 25 11 05 2025 echo Eighth Task Invalid Hour
@@ -10,5 +10,5 @@
 50 17 11 13 2025 echo Tenth Task Invalid Month
 50 17 11 05 4025 echo Eleventh Task Invalid Year
 50 02 29 02 2025 echo Twelfth Task Feb 29th Date
-*/300 echo Thirtheen Task to be executed every 300 minutes
+*/300 echo Thirteen Task to be executed every 300 minutes
 */1441 echo Fourteen Task to be executed every 300 minutes

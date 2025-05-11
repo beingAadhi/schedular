@@ -17,7 +17,7 @@ public class Schedular {
     private final List<ExecutableTask> tasks;
 
     // Default delay for one-time tasks in case of Execution time crossed already
-    private static int defaultDelay = 1000 * 60 ;
+    private static final int defaultDelay = 1000 * 60 ;
 
     public Schedular(List<ExecutableTask> tasks) {
         this.tasks = new CopyOnWriteArrayList<>(tasks);
@@ -52,7 +52,7 @@ public class Schedular {
      * @see RecurringTask
      */
     private void checkAndShutdownScheduler() {
-        if (tasks.stream().noneMatch(task -> !task.isCompleted())) {
+        if (tasks.stream().allMatch(task -> task.isCompleted())) {
             System.out.println("All tasks are completed.");
             scheduler.shutdown();
         }
