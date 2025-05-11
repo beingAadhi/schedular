@@ -1,0 +1,69 @@
+Starting SchedularApp at Sun May 11 20:26:53 IST 2025
+Failed to Parse the 61 17 11 05 2025 echo Seventh Task Invalid Minutes with Exception: Invalid Time Provided
+Failed to Parse the 50 25 11 05 2025 echo Eighth Task Invalid Hour with Exception: Invalid Time Provided
+Failed to Parse the 50 17 32 05 2025 echo Ninth Task Invalid Day with Exception: Invalid Day Provided
+Failed to Parse the 50 17 11 13 2025 echo Tenth Task Invalid Month with Exception: Invalid Month Provided
+Failed to Parse the 50 17 11 05 4025 echo Eleventh Task Invalid Year with Exception: Invalid year: 4025
+Failed to Parse the 50 02 29 02 2025 echo Twelfth Task Feb 29th Date with Exception: Invalid Day Provided
+Failed to Parse the */1441 echo Fourteen Task to be executed every 300 minutes with Exception: Please provide a valid interval between 1 and 1440 minutes
+Scheduling One-Time Task at Sun May 11 20:30:00 IST 2025
+Scheduling One-Time Task at Sun May 11 20:35:00 IST 2025
+Scheduling Recurring Task with delay: 2 minutes
+Scheduling Recurring Task with delay: 5 minutes
+Scheduling Recurring Task with delay: 10 minutes
+Scheduling Recurring Task with delay: 300 minutes
+Executing Task: RECURRING
+Executing command: echo Third Task to be executed every 2 minutes at Sun May 11 20:28:53 IST 2025
+Output from Console: Third Task to be executed every 2 minutes
+
+Executing Task: ONCE
+Executing command: echo First Task to be executed on or before the date at Sun May 11 20:30:00 IST 2025
+Output from Console: First Task to be executed on or before the date
+
+Executing Task: RECURRING
+Executing command: echo Third Task to be executed every 2 minutes at Sun May 11 20:30:53 IST 2025
+Output from Console: Third Task to be executed every 2 minutes
+
+Executing Task: RECURRING
+Executing command: echo Fourth Task to be executed every 5 minutes at Sun May 11 20:31:53 IST 2025
+Output from Console: Fourth Task to be executed every 5 minutes
+
+Executing Task: RECURRING
+Executing command: echo Third Task to be executed every 2 minutes at Sun May 11 20:32:53 IST 2025
+Output from Console: Third Task to be executed every 2 minutes
+
+Executing Task: RECURRING
+Executing command: echo Third Task to be executed every 2 minutes at Sun May 11 20:34:53 IST 2025
+Output from Console: Third Task to be executed every 2 minutes
+
+Executing Task: ONCE
+Executing command: echo Second Task to be executed on or before the date at Sun May 11 20:35:00 IST 2025
+Output from Console: Second Task to be executed on or before the date
+
+Executing Task: RECURRING
+Executing command: echo Third Task to be executed every 2 minutes at Sun May 11 20:36:53 IST 2025
+Output from Console: Third Task to be executed every 2 minutes
+
+Executing Task: RECURRING
+Executing command: echo Fourth Task to be executed every 5 minutes at Sun May 11 20:36:53 IST 2025
+Output from Console: Fourth Task to be executed every 5 minutes
+
+Executing Task: RECURRING
+Executing command: echo Fifth Task to be executed every 10 minutes at Sun May 11 20:36:53 IST 2025
+Output from Console: Fifth Task to be executed every 10 minutes
+
+Executing Task: RECURRING
+Executing command: echo Third Task to be executed every 2 minutes at Sun May 11 20:38:53 IST 2025
+Output from Console: Third Task to be executed every 2 minutes
+
+Executing Task: RECURRING
+Executing command: echo Third Task to be executed every 2 minutes at Sun May 11 20:40:53 IST 2025
+Output from Console: Third Task to be executed every 2 minutes
+
+Executing Task: RECURRING
+Executing command: echo Fourth Task to be executed every 5 minutes at Sun May 11 20:41:53 IST 2025
+Output from Console: Fourth Task to be executed every 5 minutes
+
+Executing Task: RECURRING
+Executing command: echo Third Task to be executed every 2 minutes at Sun May 11 20:42:53 IST 2025
+Output from Console: Third Task to be executed every 2 minutes
