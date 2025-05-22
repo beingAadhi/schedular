@@ -12,3 +12,24 @@
 50 02 29 02 2025 echo Twelfth Task Feb 29th Date
 */300 echo Thirteen Task to be executed every 300 minutes
 */1441 echo Fourteen Task to be executed every 300 minutes
+# New Test Cases for TerminatingRecurringTask
+# Valid Cases
+*/1 01 01 00 05 2030 echo Runs every 1 min, ends Jan 1, 2030, 00:05
+*/2 12 31 23 59 2024 echo Runs every 2 mins, ends Dec 31, 2024, 23:59 (Set year to a near future year for testing)
+*/1 01 01 00 01 2020 echo Runs every 1 min, end time in the past (Set year to a past year)
+
+# Invalid Cases - RecurringWithEndDateParser Validations
+*/0 01 01 00 05 2030 echo Invalid minutes (0) for terminating task
+*/1500 01 01 00 05 2030 echo Invalid minutes (1500) for terminating task
+*/1 13 01 00 05 2030 echo Invalid end month (13) for terminating task
+*/1 01 32 00 05 2030 echo Invalid end day (32) for terminating task
+*/1 01 01 24 05 2030 echo Invalid end hour (24) for terminating task
+*/1 01 01 00 60 2030 echo Invalid end minute (60) for terminating task
+*/1 02 29 00 00 2023 echo Invalid Feb 29 for non-leap year (2023) for terminating task
+*/1 01 01 00 00 1960 echo Invalid end year (before 1970) for terminating task
+
+# Malformed lines for RecurringWithEndDateParser
+*/1 01 01 00 2030 echo Missing end_minute for terminating task
+*/1 01 01 00 00 echo Missing end_year and command for terminating task
+*/1 01 01 00 00 2030 NOCMD Missing command part (should be part of regex)
+* echo Missing all params for terminating task

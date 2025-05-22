@@ -1,6 +1,7 @@
 package com.schedular;
 
 import java.util.List;
+import com.schedular.RecurringWithEndDateParser;
 
 /**
  * Parser Factory to create tasks based on the configured pattern.
@@ -9,6 +10,7 @@ import java.util.List;
 public class ParserFactory {
 
     private static final List<Parser> parsers = List.of(
+            new RecurringWithEndDateParser(),
             new DateTimeParser(),
             new MinutesParser()
     );
